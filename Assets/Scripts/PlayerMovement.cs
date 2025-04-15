@@ -45,9 +45,7 @@ public class PlayerMovement : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-
-
-    public void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         movement = value.Get<Vector2>();
     }

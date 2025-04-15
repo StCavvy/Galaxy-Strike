@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-
+    [SerializeField] private GameObject destroyedVFX;
     private void OnTriggerEnter(Collider collisionObject)
     {
-        if (collisionObject != null)
+        if (collisionObject != null )
         {
-            Debug.Log($"Collided with {collisionObject.name}");
+            Instantiate(destroyedVFX, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 }

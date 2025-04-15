@@ -29,7 +29,7 @@ public class PlayerWeapon : MonoBehaviour
         AimWeapons();
     }
 
-    void OnFire(InputValue value)
+    private void OnFire(InputValue value)
     {
         isFiring = value.isPressed;
     }
@@ -55,7 +55,7 @@ public class PlayerWeapon : MonoBehaviour
         crosshair.position = Input.mousePosition;
     }
 
-    void AimWeapons()
+    private void AimWeapons()
     {
         foreach (GameObject weapon in weapons)
         {
@@ -63,8 +63,5 @@ public class PlayerWeapon : MonoBehaviour
             Quaternion rotationToTarget = Quaternion.LookRotation(fireDirection);
             weapon.transform.rotation = rotationToTarget;
         }
-
-
-
     }
 }
