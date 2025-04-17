@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    //reference variable for player weapon objects
     [SerializeField] private GameObject[] weapons;
+
+    //reference variable for crosshair UI element
     [SerializeField] private RectTransform crosshair;
+
+    //variables for processing targeting
     [SerializeField] private Transform targetPoint;
     [SerializeField] private float targetDistance = 100f;
-
-
 
     bool isFiring = false;
 
@@ -29,10 +32,12 @@ public class PlayerWeapon : MonoBehaviour
         AimWeapons();
     }
 
+
     private void OnFire(InputValue value)
     {
         isFiring = value.isPressed;
     }
+
 
     private void ProcessFiring()
     {
@@ -44,17 +49,22 @@ public class PlayerWeapon : MonoBehaviour
     }
 
 
-
+    //method provides following target point on cursor
     private void MoveTargetPoint()
     {
         Vector3 targetPointPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, targetDistance);
         targetPoint.position = Camera.main.ScreenToWorldPoint(targetPointPosition);
     }
+
+
+    //method provides moving crosshair on cursor
     private void MoveCrosshair()
     {
         crosshair.position = Input.mousePosition;
     }
 
+
+    //aiming players weapons on target point 
     private void AimWeapons()
     {
         foreach (GameObject weapon in weapons)
